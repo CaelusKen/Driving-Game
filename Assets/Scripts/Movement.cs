@@ -14,10 +14,10 @@ public class Movement : MonoBehaviour
     public float decelerationDistance = 10f;
     private float targetSpeed;
     public float minSpeed = 0f;
+    public GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
-        canvas.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -37,18 +37,15 @@ public class Movement : MonoBehaviour
             transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);
         }
         else {
-            SceneManager.LoadScene("Intro");
+            gameManager.Result("Success");
         }
     }
 
     private void OnTriggerEnter(Collider other) {
         if(other.CompareTag("Obstacle")) {
             Time.timeScale = 0;
-            GameOver();
+            gameManager.Result("Game Over");
         }
-    }
-
-    void GameOver() {
-        SceneManager.LoadScene("Intro");
+        
     }
 }

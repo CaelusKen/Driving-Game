@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BusMovement : MonoBehaviour
 {
-    private float speed = 45f;
+    private float speed = 25f;
     // Start is called before the first frame update
     void Start()
     {
